@@ -17,15 +17,14 @@ class Author extends Model
         'birthday_date'
     ];
 
+    protected $hidden = [
+        'created_at',
+		'updated_at',
+        'deleted_at',
+    ];
+
     public function books()
     {
         return $this->belongsToMany(Book::class);
     }
 }
-
-/*
-public function roles()
-{
-    return $this->belongsToMany(Role::class);
-}
-*/
