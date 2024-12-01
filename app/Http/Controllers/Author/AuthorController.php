@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Author;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Author\Author as AuthorModel;
+use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
-
-
 
 class AuthorController extends Controller
 {
@@ -19,6 +18,15 @@ class AuthorController extends Controller
 
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'birthday_date' => 'required|date'
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
         $date = Carbon::parse($request->get('birthday_date'))->format('Y-m-d');
         $authorData = [
             "name" => $request->get('name'),
