@@ -17,8 +17,14 @@ class Book extends Model
         'publication_date'
     ];
 
+    protected $hidden = [
+        'created_at',
+		'updated_at',
+        'deleted_at',
+    ];
+
     public function authors()
     {
-        return $this->belongsToMany(Author::class,'book_author');
+        return $this->belongsToMany(Author::class,'book_author')->toArray();
     }
 }
