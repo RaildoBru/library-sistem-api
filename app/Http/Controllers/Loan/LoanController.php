@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Loan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\Loan\Loan as LoanModel;
 use Carbon\Carbon;
 use App\Jobs\SendEmailJob;
@@ -15,7 +16,13 @@ class LoanController extends Controller
     public function index()
     {
         $LoanQuery = LoanModel::query()->get();
-        return response()->json($LoanQuery->all());
+        return response()->json($LoanQuery->all(),Response::HTTP_OK);
+    }
+
+    public function show($id)
+    {
+        $LoanQuery = LoanModel::where('id',$id)->get();
+        return response()->json($LoanQuery->all(),Response::HTTP_OK);
     }
 
     public function store(Request $request)
@@ -27,7 +34,7 @@ class LoanController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors(), 400);
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         }
 
         $date = Carbon::parse($request->get('loan_date_final'))->format('Y-m-d');
@@ -48,6 +55,6 @@ class LoanController extends Controller
         ];
 
         SendEmailJob::dispatch($loanInfo)->onQueue('default');
-        return response()->json($LoanNew,201);
+        return response()->json($LoanNew,Response::HTTP_CREATED);
     }
 }

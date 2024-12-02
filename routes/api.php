@@ -9,6 +9,7 @@ use App\Http\Controllers\Loan\LoanController;
 use App\Http\Controllers\JWTAuthController;
 use App\Http\Middleware\JwtMiddleware;
 use App\Http\Middleware\CheckPermissionMiddleware;
+use App\Http\Controllers\Documentation\TestController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -35,6 +36,4 @@ Route::middleware([JwtMiddleware::class])->group(function () {
     });
 });
 
-Route::resource('author', AuthorController::class)->except(['show','create']);
-Route::resource('book', BookController::class)->except(['edit','create']);
-Route::resource('loan', LoanController::class)->except(['edit','create']);
+Route::post('/test', [TestController::class, 'test']);
