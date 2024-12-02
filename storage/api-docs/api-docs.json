@@ -88,9 +88,529 @@
                     "Login"
                 ],
                 "operationId": "23f91d845e19b9874eab1f09fdb0b7dc",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "oneOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "integer"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "jessica@email.com",
+                                    "senha": 123456
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
-                        "description": "Cria um toke de autentiicação"
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "type": "string",
+                                            "example": "eyJ0eXAiOi.......fuwwQYb3k"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/book": {
+            "get": {
+                "tags": [
+                    "User Livros"
+                ],
+                "operationId": "26447f5b5ebf06a24df8378a767b428a",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/book/{id}": {
+            "get": {
+                "tags": [
+                    "User Livros"
+                ],
+                "operationId": "20ccadceaffedc876036002528777271",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/book/": {
+            "get": {
+                "tags": [
+                    "Admin Livros"
+                ],
+                "operationId": "2475d7e4d7ec7ee779f4639e755167ed",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/book/id": {
+            "get": {
+                "tags": [
+                    "Admin Livros"
+                ],
+                "operationId": "69174e79e99a9371337aaa90669b8e22",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin Livros"
+                ],
+                "operationId": "122bec87d38aba62fa541ec3a2f13a7e",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin Livros"
+                ],
+                "operationId": "9b4c24a22747e58819ed8a45c7fba0c4",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/book": {
+            "post": {
+                "tags": [
+                    "Admin Livros"
+                ],
+                "operationId": "4e670cb73a0c01f40628e5235d259eba",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/author": {
+            "get": {
+                "tags": [
+                    "Admin Author"
+                ],
+                "operationId": "4f6a961cbeaa7edbc700a5033bf0ee83",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin Author"
+                ],
+                "operationId": "fbc80ff546f6c7b236da7f0d1c6ec5d1",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/author/{id}": {
+            "get": {
+                "tags": [
+                    "Admin Author"
+                ],
+                "operationId": "8b22a10e7745581983455d5f54f20bed",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin Author"
+                ],
+                "operationId": "c360be1b5a8147ec9f2890e0009da261",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin Author"
+                ],
+                "operationId": "7a1b7316108893d9e604f00c1ea1917a",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/loan": {
+            "get": {
+                "tags": [
+                    "User emprestimo"
+                ],
+                "operationId": "c0a07393de305f0dfb332d915c362999",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User emprestimo"
+                ],
+                "operationId": "56ffba9da7fbe72b224c926b9f0b4f1f",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/loan": {
+            "get": {
+                "tags": [
+                    "Admin emprestimo"
+                ],
+                "operationId": "377f21d973e1d0e4f133a40793abdd58",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin emprestimo"
+                ],
+                "operationId": "9f050d371bf8eba28f49760d098b3928",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/loan/{id}": {
+            "get": {
+                "tags": [
+                    "Admin emprestimo"
+                ],
+                "operationId": "f92b048d6b3ea0f672b5fdd3f554e628",
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "[]": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "collectionFormat": "multi"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -104,6 +624,26 @@
         {
             "name": "Login",
             "description": "Login"
+        },
+        {
+            "name": "User Livros",
+            "description": "User Livros"
+        },
+        {
+            "name": "Admin Livros",
+            "description": "Admin Livros"
+        },
+        {
+            "name": "Admin Author",
+            "description": "Admin Author"
+        },
+        {
+            "name": "User emprestimo",
+            "description": "User emprestimo"
+        },
+        {
+            "name": "Admin emprestimo",
+            "description": "Admin emprestimo"
         }
     ]
 }
