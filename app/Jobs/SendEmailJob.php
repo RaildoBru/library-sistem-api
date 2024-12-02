@@ -11,12 +11,11 @@ class SendEmailJob implements ShouldQueue
 {
     use Queueable;
 
-    /**
-     * Create a new job instance.
-     */
-    public function __construct(private $loanInfo)
+    public $loanInfo;
+
+    public function __construct($loanInfo)
     {
-        //
+        $this->loanInfo = $loanInfo;
     }
 
     /**
@@ -24,6 +23,7 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle(): void
     {
-        Mail::to($this->loanInfo['email'])->send(new SendEmail($this->loanInfo));
+        \Log::info("E-mail enviado para");
+        //Mail::to($this->loanInfo['email'])->send(new SendEmail($this->loanInfo));
     }
 }

@@ -1,0 +1,109 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Biblioteca",
+        "description": "Documentação da API utilizando Swagger",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Cadastrar"
+                ],
+                "summary": "Retorna Token de autenticação",
+                "operationId": "e6bc3fa6d78421a3c02232c3fcb7a1df",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "oneOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "integer"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Jessica Smith",
+                                    "email": "jessica@email.com",
+                                    "senha": 123456
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Cadastra um Usuario no sistema",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Jessica Smith"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "Jessica@email.com"
+                                                },
+                                                "id": {
+                                                    "type": "string",
+                                                    "example": "1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "token": {
+                                            "type": "string",
+                                            "example": "eyJ0eXAiOi.......fuwwQYb3k"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "operationId": "23f91d845e19b9874eab1f09fdb0b7dc",
+                "responses": {
+                    "200": {
+                        "description": "Cria um toke de autentiicação"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Cadastrar",
+            "description": "Cadastrar"
+        },
+        {
+            "name": "Login",
+            "description": "Login"
+        }
+    ]
+}
