@@ -141,9 +141,31 @@ class TestController extends Controller
      *         )
      *     )
      *  ),
-     * @OA\Get(
+     * @OA\Post(
      *     path="/api/admin/book/",
      *     tags={"Admin Livros"},
+     *      @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="title",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="publication_date",
+     *                     type="date"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="author",
+     *                     oneOf={
+     *                     	   @OA\Schema(type="string"),
+     *                     }
+     *                 ),
+     *                 example={"title": "Livro nome", "publication_date": "12-12-2000", "author" : {}}
+     *             )
+     *         )
+     *     ),
      *      @OA\Response(
      *         response=200,
      *         description="Cadastra um Usuario no sistema",
@@ -158,7 +180,7 @@ class TestController extends Controller
      *     )
      *  )
      * @OA\Get(
-     *     path="/api/admin/book/id",
+     *     path="/api/admin/book/{id}",
      *     tags={"Admin Livros"},
      *      @OA\Response(
      *         response=200,
@@ -173,7 +195,7 @@ class TestController extends Controller
      *         )
      *     )
      *  ),
-     * @OA\Post(
+     * @OA\Get(
      *     path="/api/admin/book",
      *     tags={"Admin Livros"},
      *      @OA\Response(
@@ -190,8 +212,24 @@ class TestController extends Controller
      *     )
      *  ),
      * @OA\Put(
-     *     path="/api/admin/book/id",
+     *     path="/api/admin/book/{id}",
      *     tags={"Admin Livros"},
+     *      @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="title",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="publication_date",
+     *                     type="date"
+     *                 ),
+     *                 example={"title": "Livro nome", "publication_date": "12-12-2000",}
+     *             )
+     *         )
+     *     ),
      *      @OA\Response(
      *         response=200,
      *         description="Cadastra um Usuario no sistema",
@@ -206,7 +244,7 @@ class TestController extends Controller
      *     )
      *  ),
      * @OA\Delete(
-     *     path="/api/admin/book/id",
+     *     path="/api/admin/book/{id}",
      *     tags={"Admin Livros"},
      *      @OA\Response(
      *         response=200,
@@ -256,6 +294,22 @@ class TestController extends Controller
      * @OA\Post(
      *     path="/api/admin/author",
      *     tags={"Admin Author"},
+     *      @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="birthday_date",
+     *                     type="date"
+     *                 ),
+     *                 example={"name": "Nome Author", "birthday_date": "12-12-2000",}
+     *             )
+     *         )
+     *     ),
      *      @OA\Response(
      *         response=200,
      *         description="Cadastra um Usuario no sistema",
@@ -272,6 +326,22 @@ class TestController extends Controller
      * @OA\Put(
      *     path="/api/admin/author/{id}",
      *     tags={"Admin Author"},
+     *      @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="birthday_date",
+     *                     type="date"
+     *                 ),
+     *                 example={"name": "Nome Author", "birthday_date": "12-12-2000",}
+     *             )
+     *         )
+     *     ),
      *      @OA\Response(
      *         response=200,
      *         description="Cadastra um Usuario no sistema",
@@ -320,12 +390,32 @@ class TestController extends Controller
      * @OA\Post(
      *     path="/api/user/loan",
      *     tags={"User emprestimo"},
+     *      @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="loan_date_final",
+     *                     type="date"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="book_id",
+     *                     type="integer"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="cliente_id",
+     *                     type="integer"
+     *                 ),
+     *                 example={"loan_date_final": "12-12-2024", "book_id": "1","cliente_id": "1"}
+     *             )
+     *         )
+     *     ),
      *      @OA\Response(
      *         response=200,
      *         description="Cadastra um Usuario no sistema",
      *         @OA\JsonContent(
      *             @OA\Property(
-     *                 property="[]",
+     *                 property="{}",
      *                 type="array",
      *                 collectionFormat="multi",
      *                 @OA\Items(type="string"),
@@ -368,6 +458,26 @@ class TestController extends Controller
      * @OA\Post(
      *     path="/api/admin/loan",
      *     tags={"Admin emprestimo"},
+     *      @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="loan_date_final",
+     *                     type="date"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="book_id",
+     *                     type="integer"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="cliente_id",
+     *                     type="integer"
+     *                 ),
+     *                 example={"loan_date_final": "12-12-2024", "book_id": "1","cliente_id": "1"}
+     *             )
+     *         )
+     *     ),
      *      @OA\Response(
      *         response=200,
      *         description="Cadastra um Usuario no sistema",
