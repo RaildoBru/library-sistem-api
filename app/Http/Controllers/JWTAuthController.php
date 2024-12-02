@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -13,8 +14,6 @@ class JWTAuthController extends Controller
 {
     public function register(Request $request)
     {
-        dd(strtolower($request->get('email')));
-
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -22,7 +21,7 @@ class JWTAuthController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors(), 400);
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         }
 
         $user = Cliente::create([
@@ -33,7 +32,7 @@ class JWTAuthController extends Controller
 
         $token = JWTAuth::fromUser($user);
 
-        return response()->json(compact('user','token'), 201);
+        return response()->json(compact('user','token'), Response::HTTP_CREATED);
     }
 
     // User login
@@ -43,7 +42,7 @@ class JWTAuthController extends Controller
 
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'Invalid credentials'], 401);
+                return response()->json(['error' => 'Invalid credentials'], Response::HTTP_UNAUTHORIZED);
             }
 
             // Get the authenticated user.
@@ -51,7 +50,7 @@ class JWTAuthController extends Controller
 
             return response()->json(compact('token'));
         } catch (JWTException $e) {
-            return response()->json(['error' => 'Could not create token'], 500);
+            return response()->json(['error' => 'Could not create token'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -60,10 +59,10 @@ class JWTAuthController extends Controller
     {
         try {
             if (! $user = JWTAuth::parseToken()->authenticate()) {
-                return response()->json(['error' => 'User not found'], 404);
+                return response()->json(['error' => 'User not found'], Response::HTTP_NOT_FOUND);
             }
         } catch (JWTException $e) {
-            return response()->json(['error' => 'Invalid token'], 400);
+            return response()->json(['error' => 'Invalid token'], Response::HTTP_BAD_REQUEST);
         }
 
         return response()->json(compact('user'));
